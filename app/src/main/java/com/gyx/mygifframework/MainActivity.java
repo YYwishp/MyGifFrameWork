@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 	public void ndkLoadGif(View view) {
-		File file = new File(Environment.getExternalStorageState(), "demo.gif");
+		File file = new File(Environment.getExternalStorageDirectory(), "demo.gif");
 		gifHandler = GifHandler.load(file.getAbsolutePath());
 		int width = gifHandler.getWidth();
 		int height = gifHandler.getHeight();

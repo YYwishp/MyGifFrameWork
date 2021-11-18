@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 	private ActivityMainBinding binding;
 	Bitmap bitmap;
 	GifHandler gifHandler;
-	ImageView imageView;
+	//ImageView imageView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,23 +66,23 @@ public class MainActivity extends AppCompatActivity {
 			super.handleMessage(msg);
 			int delay = gifHandler.updateFrame(bitmap);
 			myHandler.sendEmptyMessageDelayed(1, delay);
-			imageView.setImageBitmap(bitmap);
+			binding.image.setImageBitmap(bitmap);
 		}
 	};
 
 
 
 	public void ndkLoadGif(View view) {
-		File file = new File(Environment.getExternalStorageDirectory(), "demo.gif");
+		File file = new File(Environment.getExternalStorageDirectory(), "demo2.gif");
 		gifHandler = GifHandler.load(file.getAbsolutePath());
 		int width = gifHandler.getWidth();
 		int height = gifHandler.getHeight();
 		Log.e("gyx", "宽" + width + "  高 " + height);
 		bitmap = Bitmap.createBitmap(width, height, ARGB_8888);
 		//通知 C 渲染完成
-		//int delay = gifHandler.updateFrame(bitmap);
-		//
-		//imageView.setImageBitmap(bitmap);
-		//myHandler.sendEmptyMessageDelayed(1, delay);
+		int delay = gifHandler.updateFrame(bitmap);
+
+		binding.image.setImageBitmap(bitmap);
+		myHandler.sendEmptyMessageDelayed(1, delay);
 	}
 }

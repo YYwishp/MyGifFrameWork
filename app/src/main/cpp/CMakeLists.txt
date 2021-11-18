@@ -15,8 +15,8 @@ project("mygifframework")
 # Gradle automatically packages shared libraries with your APK.
 
 add_library( # Sets the name of the library.
-        native-lib
-#        mygifframework
+#        native-lib
+        mygifframework
 
         # Sets the library as a shared library.
         SHARED
@@ -49,9 +49,10 @@ find_library(  jnigraphics-lib
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        native-lib
-#        mygifframework
+#        native-lib
+        mygifframework
 
         # Links the target library to the log library
         # included in the NDK.
+        ${jnigraphics-lib}
         ${log-lib})

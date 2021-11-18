@@ -11,7 +11,8 @@ public class GifHandler {
 
 	static{
 
-		System.loadLibrary("native-lib");
+		//System.loadLibrary("native-lib");
+		System.loadLibrary("mygifframework");
 
 	}
 
